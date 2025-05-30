@@ -12,17 +12,11 @@
 
 ## 설치 방법
 
-### pip를 통한 설치
-
-```bash
-pip install hangul-dtw-pkg
-```
-
 ### 소스 코드에서 설치
 
 ```bash
-git clone https://github.com/your-username/hangul-dtw-pkg.git
-cd hangul-dtw-pkg
+git clone https://github.com/dirhq88/hangul_dtw.git
+cd hangul_dtw
 pip install -e .
 ```
 
