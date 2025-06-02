@@ -11,7 +11,8 @@ def hangul_DTW(
     raw_text: str,
     print_matrix: bool = False,
     print_align: bool = False,
-    multi: bool = True
+    multi: bool = True,
+    space: bool = True
 ) -> Tuple[np.ndarray, List[np.ndarray], List[Tuple[Tuple[str, int], Tuple[str, int]]], Dict[int, List[int]]]:
     """
     두 한글 문자열 간의 DTW(Dynamic Time Warping)를 계산하고 정렬 정보를 반환합니다.
@@ -51,7 +52,7 @@ def hangul_DTW(
     
     try:
         # DTW 행렬과 경로 계산
-        dtw_matrix, path = compute_dtw_matrix(processed_gt, processed_raw, processed_raw_with_space, multi=multi)
+        dtw_matrix, path = compute_dtw_matrix(processed_gt, processed_raw, processed_raw_with_space, multi=multi, space=space)
 
         # 자모 정렬과 음절 매핑 계산
         jamo_alignments, syllable_mapping = compute_character_mapping(processed_gt, processed_raw, dtw_matrix, path)

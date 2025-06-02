@@ -103,7 +103,7 @@ def visualize_matrix_with_path(
     if raw_jamo:
         ax.set_xticks(np.arange(len(raw_jamo)))
         x_labels = [f'{jamo_char}' for jamo_char in raw_jamo]
-        ax.set_xticklabels(x_labels, rotation=0, fontsize=12, fontweight='bold', va='top')
+        ax.set_xticklabels(x_labels, rotation=0, fontsize=20, fontweight='bold', va='top')
     else:
         ax.set_xticks([])
         ax.set_xticklabels([])
@@ -111,7 +111,7 @@ def visualize_matrix_with_path(
     if gt_jamo:
         ax.set_yticks(np.arange(len(gt_jamo)))
         y_labels = [f'{jamo_char}' for jamo_char in gt_jamo]
-        ax.set_yticklabels(y_labels, fontsize=12, fontweight='bold')
+        ax.set_yticklabels(y_labels, fontsize=20, fontweight='bold')
     else:
         ax.set_yticks([])
         ax.set_yticklabels([])
@@ -123,6 +123,7 @@ def visualize_matrix_with_path(
     plt.title("DTW 행렬과 워핑 경로", fontsize=14, fontweight='bold')
     
     plt.tight_layout()
+    plt.savefig('dtw_matrix_visualization_modified.pdf')
     plt.show()
 
 def print_alignments(

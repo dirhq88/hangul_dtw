@@ -9,7 +9,8 @@ def compute_dtw_matrix(
     gt_text: str,
     raw_text: str,
     raw_text_with_space: str,
-    multi: bool = True
+    multi: bool = True,
+    space: bool = True
 ) -> Tuple[np.ndarray, List[np.ndarray]]:
     """두 한글 문자열의 자모 시퀀스 간 DTW 비용 행렬과 최적 경로를 계산합니다.
 
@@ -48,8 +49,10 @@ def compute_dtw_matrix(
             _current_raw_idx = map_origin_index(current_raw_idx, raw_jamo_seq, raw_jamo_seq_with_space)
 
             if multi:
-                #max_gt_offset, max_raw_offset = find_max_offset(gt_jamo_seq, current_gt_idx, raw_jamo_seq, current_raw_idx)
-                max_gt_offset, max_raw_offset = find_max_offset(gt_jamo_seq, current_gt_idx, raw_jamo_seq_with_space, _current_raw_idx)
+                if space:
+                    max_gt_offset, max_raw_offset = find_max_offset(gt_jamo_seq, current_gt_idx, raw_jamo_seq_with_space, _current_raw_idx)
+                else:
+                    max_gt_offset, max_raw_offset = find_max_offset(gt_jamo_seq, current_gt_idx, raw_jamo_seq, current_raw_idx)
                         
             candidate_costs: List[float] = []
             candidate_prev_paths: List[Tuple[int, int]] = []
